@@ -1,0 +1,53 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+
+	<div class="container">
+		<div th:replace="~{base :: titulo(#{catrh.funcionario.cadastro.titulo})}"></div>
+		<div class="card mt-3">
+			<form th:object="${requisicaoNovoFuncionario}" class="card-body"
+				action="/funcionario/novo" method="POST">
+				<div class="form-group">
+					<label for="funcionarioNome" th:text="#{catrh.funcionario.cadastro.nome}">Teste</label> 
+					<input
+						th:field="*{funcionarioNome}" th:errorClass="is-invalid"
+						class="form-control" placeholder="Nome do funcionario" /> <small>Informa
+						qual o nome do funcionário</small>
+					<div class="invalid-feedback" th:errors="*{funcionarioNome}">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="funcionarioCargo">Cargo</label> 
+					<select th:field="*{funcionarioCargo}" 
+							class="form-control" 
+								placeholder="Cargo do funcionario" th:errorClass="is-invalid">
+						<option th:each="c : ${cargos}"  th:value="${c.id}" th:text="${c.descricao}"></option>
+					</select>
+					<small>Informa
+						qual o sargo do funcionário</small>
+					<div class="invalid-feedback" th:erros="*{funcionarioCargo}">
+						Erros do cargo do funcionário</div>
+				</div>
+				<div class="form-group">
+					<label for="funcionarioSalario">Salário</label> <input
+						th:field="*{funcionarioSalario}" th:errorClass="is-invalid"
+						class="form-control" placeholder="Salario do funcionario" /> <small>Informa
+						qual o salario do funcionário</small>
+					<div class="invalid-feedback" th:erros="*{funcionarioSalario}">
+						Erros do salario do funcionário</div>
+				</div>
+				<div class="form-group">
+					<label for="funcionarioDataContratacao">Data da Contratação</label> <input
+						th:field="*{funcionarioSalario}" th:errorClass="is-invalid"
+						class="form-control" placeholder="Salario do funcionario" /> <small>Informa
+						qual a Data da contratação do funcionário</small>
+					<div class="invalid-feedback" th:erros="*{funcionarioDataContratacao}">
+						Erros na data da Contratação do funcionário</div>
+				</div>
+				<button class="btn btn-primary" type="submit">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>	
+
+	<div class="container">
+		<div th:replace="~{base :: titulo('Sistema de RH')}"></div>
+		<div class="card" th:each="funcionario : ${funcionarios}">
+			<div class="card-header">
+					Nome do funcionario: <span th:text="${funcionario.nome}">
+						 João da Silva</span>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm-4">
+						Cargo: <span th:text="${funcionario.cargo.descricao}">Funcionario</span>
+					</div>
+					<div class="col-md-4">
+						Admissão <span th:text="${funcionario.dataContratacao}">10/02/2021</span>
+					</div>
+					<div class="col-md-4">
+						Salário: <span th:text="${funcionario.salario}">R$ 15.000,00</span>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+</body>
+</html>
